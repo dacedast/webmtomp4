@@ -9,7 +9,7 @@ const app = express();
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/uploads");
+    cb(null, "files/uploads");
   },
   filename: function (req, file, cb) {
     cb(
@@ -45,7 +45,7 @@ var uploadvideo = multer({
   fileFilter: videoFilter,
 }).single("file");
 
-app.use(express.static(path.resolve(__dirname + "public/uploads")));
+app.use(express.static(path.resolve(__dirname + "files/uploads")));
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 app.set("view engine", "ejs");
